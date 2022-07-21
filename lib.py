@@ -10,7 +10,7 @@ def draw(l: list) -> None:
 
 def sub(data: list, i1: int, i2: int) -> list:
     for k in range(i1 + 1, len(data) + 1):
-        data[i2][k] -= data[i1][k]# - data[i2][k]
+        data[i2][k] -= data[i1][k]
     data[i2][i1] = 0
     return data
 
@@ -28,9 +28,7 @@ def gauss(data: list, f: bool = False) -> "list[int]":
                     data[i], data[d] = data[d], data[i]
                 break
         else:
-            raise Exception("Error")
-        #    for i in range(d, dimensions):
-        #        
+            raise Exception("Error")  
 
         for i in range(d, dimensions):
             if data[i][d] != 0:
