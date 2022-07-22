@@ -18,16 +18,37 @@ import lib
 #
 #print(lib.gauss(data))
 
-inp = []
+# inp = []
+# 
+# for _ in range(3):
+    # inp.append(list(map(float, input("$ ").split())))
+# 
+# matrix = []
+# 
+# for row in inp:
+    # matrix.append([row[0] ** 2, row[0], 1, row[-1]])
+# 
+# ans = lib.gauss(matrix)
+# 
+# print(f"y = {ans[0]}*x^2 + {ans[1]}*x + {ans[2]}")
 
-for _ in range(3):
-    inp.append(list(map(float, input("$ ").split())))
+start, finish = list(map(float, input("$ ").split()))
 
-matrix = []
+if lib.f(start) * lib.f(finish) >= 0 or start >= finish:
+    raise Exception
 
-for row in inp:
-    matrix.append([row[0] ** 2, row[0], 1, row[-1]])
+x = finish - ((finish - start) * lib.f(finish) / (lib.f(finish) - lib.f(start)))
 
-ans = lib.gauss(matrix)
+accurance = 1e-14
 
-print(f"y = {ans[0]}*x^2 + {ans[1]}*x + {ans[2]}")
+while abs(lib.f(x)) > accurance:
+    x = finish - ((finish - start) * lib.f(finish) / (lib.f(finish) - lib.f(start)))
+
+    if x < 0:
+        finish = x
+    else:
+        start = x
+    
+    # print(f"{start = }; {finish = }; {x = }")
+
+print(f"{x = }")

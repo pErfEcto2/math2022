@@ -1,3 +1,6 @@
+def f(x):
+    return x ** 2 - 3
+
 def div(data: list, i: int, j: int) -> list:
     for k in range(j + 1, len(data) + 1):
         data[i][k] /= data[i][j]
